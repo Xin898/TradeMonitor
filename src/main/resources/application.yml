@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: trade-monitor
+  datasource:
+    url: ${MONITOR_DB_URL:jdbc:postgresql://localhost:5432/trademonitor}
+    username: ${MONITOR_DB_USER:trademonitor}
+    password: ${MONITOR_DB_PASSWORD:trademonitor}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    consumer:
+      auto-offset-reset: earliest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
